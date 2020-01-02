@@ -19,6 +19,12 @@ object Eq {
     case _ => false
   }
 
+  /** Excercise 0.3
+  */
+  def notEq[A](a1: A, a2: A)(implicit eqA: Eq[A]): Boolean = !eqA.eq(a1, a2)
+
+  /** Excercise 0.4
+  */
   implicit def eqTuple[A, B](implicit eqA: Eq[A], eqB: Eq[B]): Eq[(A, B)] = (t1: (A, B), t2: (A, B)) => eqA.eq(t1._1, t2._1) && eqB.eq(t1._2, t2._2)
   
 }
