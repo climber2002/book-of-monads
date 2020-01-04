@@ -32,3 +32,16 @@ pure'' x = \i -> (x, i)
 
 next'' :: State s a -> (a -> State s b) -> State s b
 f `next''` g = \i -> let (r, i') = f i in g r i'
+
+-- Exercise 1.2
+(+++) :: [a] -> [a] -> [a]
+(+++) [] ys = ys
+(+++) (x : xs) ys = x : ((++) xs ys)
+
+singleton :: a -> [a]
+singleton a = a : []
+
+then_ :: Maybe a -> (a -> Maybe b) -> Maybe b
+then_ ma f = case ma of
+              Nothing -> Nothing
+              Just a -> f a
